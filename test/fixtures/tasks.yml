@@ -1,0 +1,21 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  kadai_id: 
+  status: MyString
+  do_person: MyString
+  task: MyString
+  plan_hour: 1.5
+  due_date: 2017-10-17
+  actual_hour: 1.5
+  do_date: 2017-10-17
+
+two:
+  kadai_id: 
+  status: MyString
+  do_person: MyString
+  task: MyString
+  plan_hour: 1.5
+  due_date: 2017-10-17
+  actual_hour: 1.5
+  do_date: 2017-10-17

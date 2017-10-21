@@ -1,0 +1,57 @@
+<%= form_for(@kadai) do |f| %>
+  <% if @kadai.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@kadai.errors.count, "error") %> prohibited this kadai from being saved:</h2>
+
+      <ul>
+      <% @kadai.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :status, '状態' %><br>
+    <%= f.collection_select :status, Status.all, :phase, :phase %>
+  </div>
+  <div class="field">
+    <%= f.label :vote_date,'起票日' %><br>
+    <%= f.date_select :vote_date %>
+  </div>
+  <div class="field">
+    <%= f.label :vote_person,'起票者' %><br>
+    <%= f.collection_select :vote_person, Person.all, :name,:name %>
+  </div>
+  <div class="field">
+    <%= f.label :category,'カテゴリー' %><br>
+    <%= f.collection_select :category,Category.all, :name,:name %>
+  </div>
+  <div class="field">
+    <%= f.label :subject, '課題' %><br>
+    <%= f.text_field :subject %>
+  </div>
+  <div class="field">
+    <%= f.label :level,'重要度' %><br>
+    <%= f.collection_select :level, Level.all, :level, :level %>
+  </div>
+  <div class="field">
+    <%= f.label :do_person,'対応担当者' %><br>
+    <%= f.collection_select :do_person, Person.all, :name,:name %>
+  </div>
+  <div class="field">
+    <%= f.label :goal,'完了基準' %><br>
+    <%= f.text_field :goal %>
+  </div>
+  <div class="field">
+    <%= f.label :due_date,'期日' %><br>
+    <%= f.date_select :due_date %>
+  </div>
+  <div class="field">
+    <%= f.label :end_date, '完了日' %><br>
+    <%= f.date_select :end_date %>
+  </div>
+  <div class="actions">
+    <%= f.submit("更新する") %>
+  </div>
+<% end %>

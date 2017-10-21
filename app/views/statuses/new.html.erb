@@ -1,0 +1,10 @@
+
+<%= form_for :status, url: statuses_path do |f| %>
+  <div class="field">
+      <%= f.label :phase, '進捗' %><br>
+      <%= f.text_field :phase, placeholder: "進捗状態を入力" %> 
+  </div>
+  <div class="actions">
+    <%= f.submit("新規投稿") %>
+  </div>
+<% end %>

@@ -1,0 +1,21 @@
+<h2>進捗状態一覧</h2>
+
+<table>
+    <thead>
+        <tr>
+            <th>id</th>
+            <th>状態</th>
+        </tr>
+    </thead>
+    
+    <tbody>
+        <% @statuses.each do |status| %>
+            <tr>
+                <td><%= status.id %></td>
+                <td><%= status.phase %></td>
+            </tr>
+        <% end %>
+    </tbody>
+</table>
+
+<p><%= link_to '状態を追加する', new_status_path %></p>

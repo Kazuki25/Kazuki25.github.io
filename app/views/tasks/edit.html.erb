@@ -1,0 +1,51 @@
+<h2>タスクの編集</h2>
+
+タスク番号：<%= params[:id] %></br>
+課題番号：<%= params[:kadai_id] %>
+
+<%= form_for [@kadai, @task] do |f| %>
+  <% if @task.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@task.errors.count, "error") %> prohibited this task from being saved:</h2>
+
+      <ul>
+      <% @task.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :status, '状態' %><br>
+    <%= f.select :status, ["01_Open","02_Inprocess","03_Pending", "04_Invaild","99_Close"]%>
+  </div>
+  <div class="field">
+    <%= f.label :task,'タスク内容' %><br>
+    <%= f.text_field :task %>
+  </div>
+  <div class="field">
+    <%= f.label :do_person,'担当者' %><br>
+    <%= f.select :do_person,['浅','作村','吉野'] %>
+  </div>
+  <div class="field">
+    <%= f.label :plan_hour,'予定作業時間(h)' %><br>
+    <%= f.text_field :plan_hour %>
+  </div>
+  <div class="field">
+    <%= f.label :due_date, '実施予定日' %><br>
+    <%= f.date_select :due_date %>
+  </div>
+  <div class="field">
+    <%= f.label :actual_hour,'実績作業時間(h)' %><br>
+    <%= f.text_field :actual_hour %>
+  </div>
+  <div class="field">
+    <%= f.label :do_date,'実施日' %><br>
+    <%= f.date_select :do_date %>
+  </div>
+
+  <div class="actions">
+    <%= f.submit("更新する") %>
+  </div>
+<% end %>

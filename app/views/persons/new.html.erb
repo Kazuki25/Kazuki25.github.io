@@ -1,0 +1,10 @@
+
+<%= form_for :person, url: persons_path do |f| %>
+  <div class="field">
+      <%= f.label :name, '名前' %><br>
+      <%= f.text_field :name, placeholder: "担当者を入力" %> 
+  </div>
+  <div class="actions">
+    <%= f.submit("新規投稿") %>
+  </div>
+<% end %>

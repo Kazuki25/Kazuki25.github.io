@@ -1,0 +1,29 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  status: MyString
+  vote_date: 2017-10-17
+  vote_person: MyString
+  category: MyString
+  subject: MyString
+  level: MyString
+  do_person: MyString
+  goal: MyString
+  due_date: 2017-10-17
+  plan_hour: 1.5
+  actual_hour: 1.5
+  end_date: 2017-10-17
+
+two:
+  status: MyString
+  vote_date: 2017-10-17
+  vote_person: MyString
+  category: MyString
+  subject: MyString
+  level: MyString
+  do_person: MyString
+  goal: MyString
+  due_date: 2017-10-17
+  plan_hour: 1.5
+  actual_hour: 1.5
+  end_date: 2017-10-17

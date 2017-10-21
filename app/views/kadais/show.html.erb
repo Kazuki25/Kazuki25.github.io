@@ -1,0 +1,106 @@
+<p id="notice"><%= notice %></p>
+
+<p><%= link_to '課題を編集', edit_kadai_path(@kadai) %> </p>
+
+<table border="0">
+<tr>
+  <td><strong>状態</strong></td>
+  <td><%= @kadai.status %></td>
+</tr>
+<tr>
+  <td><strong>起票日</strong></td>
+  <td><%= @kadai.vote_date %></td>
+</tr>
+<tr>
+  <td><strong>起票者</strong></td>
+  <td><%= @kadai.vote_person %></td>
+</tr>
+<tr>
+  <td><strong>カテゴリー</strong></td>
+  <td><%= @kadai.category %></td>
+</tr>
+<tr>
+  <td><strong>課題内容</strong></td>
+  <td><%= @kadai.subject %></td>
+</tr>
+<tr>
+  <td><strong>重要度</strong></td>
+  <td><%= @kadai.level %></td>
+</tr>
+<tr>
+  <td><strong>対応担当者</strong></td>
+  <td><%= @kadai.do_person %></td>
+</tr>
+<tr>
+  <td><strong>完了基準</strong></td>
+  <td><%= @kadai.goal %></td>
+</tr>
+<tr>
+  <td><strong>期日</strong></td>
+  <td><%= @kadai.due_date %></td>
+</tr>
+<tr>
+  <td><strong>予定作業時間(h）</strong></td>
+  <td><%= @kadai.tasks.sum(:plan_hour) %></td>
+</tr>
+<tr>
+  <td><strong>実績作業時間(h)</strong></td>
+  <td><%= @kadai.tasks.sum(:actual_hour) %></td>
+</tr>
+<tr>
+  <td><strong>完了日</strong></td>
+  <td><%= @kadai.end_date %></td>
+</tr>
+</table>
+
+
+
+<h3>関連タスク</h3>
+<table border="1">
+  <thead>
+    <tr>
+      <th>タスク番号</th>
+      <th>タスク内容</th>
+      <th>状態</th>
+      <th>担当者</th>
+      <th>予定作業時間(h)</th>
+      <th>実施予定日</th>
+      <th>実績作業時間(h)</th>
+      <th>実施日</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+  
+  <tbody>
+    <% @kadai.tasks.where.not(status:"04_Invaild").each do |task| %>
+    <tr>
+      <td><%= task.id %></td>
+      <td><%= task.task %></td>
+      <td><%= task.status %></td>
+      <td><%= task.do_person %></td>
+      <td><%= task.plan_hour %></td>
+      <td><%= task.due_date %></td>
+      <td><%= task.actual_hour %></td>
+      <td><%= task.do_date %></td>
+      <td><%= link_to 'Edit', edit_kadai_task_path(@kadai,task) %></td>
+      <td>blank</td>
+      <td>blank</td>
+    </tr>
+    <% end %>
+  </tbody>
+</table>
+
+
+<h3>タスクを追加する</h3>
+<%= form_for [@kadai, @task] do |f| %>
+  <p>タスク内容:</p><p><%= f.text_field :task %></p>
+  <p>状態:</p><p><%= f.select :status,["01_Open","02_Inprocess","03_Pending", "04_Invaild","99_Close"]%></p>
+  <p>担当者:</p><p><%= f.text_field :do_person %></p>
+  <p>予定作業時間:</p><p><%= f.text_field :plan_hour %></p>
+  <p>実施予定日:</p><p><%= f.date_select :due_date %></p>
+
+  <%= f.submit '新規タスクを追加' %>
+<% end %>
+
+
+<%= link_to 'Topに戻る', kadais_path %>
