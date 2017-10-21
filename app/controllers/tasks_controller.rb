@@ -1,6 +1,6 @@
 class TasksController < ApplicationController
     def index
-        @tasks = Task.where.not(status:"04_Invaild")
+        @tasks = Task.where.not(status:["04_Invaild"])
     end
     
     def create
@@ -30,6 +30,6 @@ class TasksController < ApplicationController
     end
     
     def calender
-        @tasks = Task.order('due_date ASC')
+        @tasks = Task.where.not(status: ["04_Invaild","99_Close",""]).order('due_date ASC')
     end
 end

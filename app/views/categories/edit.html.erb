@@ -1,0 +1,10 @@
+<%= form_for @category do |f| %>
+  <div class="field">
+    <%= f.label :name, 'カテゴリー名' %><br>
+    <%= f.text_field :name %>
+  </div>
+
+  <div class="actions">
+    <%= f.submit("更新する") %>
+  </div>
+<% end %>

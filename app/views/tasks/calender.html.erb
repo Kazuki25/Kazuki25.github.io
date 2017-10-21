@@ -3,24 +3,24 @@
         <th>タスク番号</th>
         <th>課題番号</th>
         <th>担当者</th>
-        <th width="100">タスク内容</th>
+        <th width="0">タスク内容</th>
         <th>実施予定日</th>
         <% for i in -5..15 do%>
             <% if i == 0 then %>
-                <th style="background-color:#EB7988; color:#FFFFFF;"><%= (Date.today+i).strftime('%m/%d') %><br>Today</th>
+                <th class="emp"><%= (Date.today+i).strftime("%m/%d") %><br>Today</th>
             <% else %>
-                <th><%= (Date.today+i).strftime('%m/%d') %></th>
+                <th><%= (Date.today+i).strftime("%m/%d") %></th>
             <% end %>
         <% end %>
     </thead>
     <tbody>
         <% @tasks.each do |task| %>
         <tr>
-            <td><%= link_to task.id, edit_task_path(task) %></td>
-            <td><%= link_to task.kadai_id, edit_kadai_path(task.kadai_id) %></td>
+            <td class="edit"><%= link_to task.id, edit_task_path(task) %></td>
+            <td class="edit"><%= link_to task.kadai_id, edit_kadai_path(task.kadai_id) %></td>
             <td><%= task.do_person %></td>
-            <td width="100"><%= task.task %></td>
-            <td><%= task.due_date.strftime('%m/%d') %></td>
+            <td width="0"><%= task.task %></td>
+            <td><%= task.due_date.strftime("%m/%d") %></td>
             <% for i in -5..15 do %>
                 <% if task.due_date == (Date.today+i) then %>
                     <td style="background-color:#A2DBA8; color:#ffffff; text-align:center;"><%= task.plan_hour %></td>

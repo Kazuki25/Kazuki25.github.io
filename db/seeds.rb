@@ -6,8 +6,9 @@
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
 
-require "csv"
+require 'csv'
 
-CSV.foreach('db/kadais.csv') do |row|
-    
+csv_data = CSV.read('db/task.csv', headers: true)
+csv_data.each do |data|
+    Task.create!(data.to_hash)
 end

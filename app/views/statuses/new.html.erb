@@ -1,6 +1,10 @@
 
 <%= form_for :status, url: statuses_path do |f| %>
   <div class="field">
+      <%= f.label :code, '番号' %><br>
+      <%= f.text_field :code, placeholder: "識別コードを入力" %> 
+  </div>
+  <div class="field">
       <%= f.label :phase, '進捗' %><br>
       <%= f.text_field :phase, placeholder: "進捗状態を入力" %> 
   </div>

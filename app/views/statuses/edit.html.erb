@@ -1,0 +1,15 @@
+<%= form_for @status do |f| %>
+  <div class="field">
+    <%= f.label :code, '識別コード' %><br>
+    <%= f.text_field :code %>
+  </div>
+  
+  <div class="field">
+    <%= f.label :phase, '状態' %><br>
+    <%= f.text_field :phase %>
+  </div>
+  
+  <div class="actions">
+    <%= f.submit("更新する") %>
+  </div>
+<% end %>

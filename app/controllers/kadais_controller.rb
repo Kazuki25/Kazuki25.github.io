@@ -4,8 +4,8 @@ class KadaisController < ApplicationController
   # GET /kadais
   # GET /kadais.json
   def index
-    @kadais = Kadai.all
-    @tasks = Task.where.not(status:["04_Invaild", "99_Close"])
+    @kadais = Kadai.where.not(status: ["04_Invaild", "99_Close"])
+    @tasks = Task.where.not(status:["04_Invaild", "99_Close"]).order("due_date ASC")
   end
 
   # GET /kadais/1
