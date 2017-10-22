@@ -1,0 +1,35 @@
+<p id="notice"><%= notice %></p>
+
+<h2>課題一覧(終了した課題を含む)</h2>
+
+<table>
+  <thead>
+    <tr>
+      <th></th>
+      <th></th>
+      <th>状態</th>
+      <th>カテゴリー</th>
+      <th>重要度</th>
+      <th>対応担当者</th>
+      <th>課題内容（現状記述）</th>
+      <th>期日</th>
+      <th>進捗状況</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @kadais.each do |kadai| %>
+      <tr>
+        <td class="edit"><%= link_to '詳細', kadai %></td>
+        <td class="edit"><%= link_to '編集', edit_kadai_path(kadai) %></td>
+        <td data-label='状態'><%= kadai.status %></td>
+        <td data-label='カテゴリー'><%= kadai.category %></td>
+        <td data-label='重要度'><%= kadai.level %></td>
+        <td data-label='対応担当者'><%= kadai.do_person %></td>
+        <td data-label='内容'><%= kadai.subject %></td>
+        <td data-label='期日'><%= kadai.due_date %></td>
+        <td data-label='進捗'><%= kadai.tasks.sum(:plan_hour).round(1) %>h(<%= kadai.tasks.sum(:actual_hour).round(1)%>h完了)</td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>

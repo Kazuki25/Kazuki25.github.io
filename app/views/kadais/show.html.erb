@@ -41,11 +41,11 @@
 </tr>
 <tr>
   <td><strong>予定作業時間(h）</strong></td>
-  <td><%= @kadai.tasks.sum(:plan_hour) %></td>
+  <td><%= @kadai.tasks.sum(:plan_hour).round(1) %></td>
 </tr>
 <tr>
   <td><strong>実績作業時間(h)</strong></td>
-  <td><%= @kadai.tasks.sum(:actual_hour) %></td>
+  <td><%= @kadai.tasks.sum(:actual_hour).round(1) %></td>
 </tr>
 <tr>
   <td><strong>完了日</strong></td>

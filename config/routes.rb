@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  get 'kadais/list' => 'kadais#list', as: 'list_kadais'
+  
   resources :kadais do
     resources :tasks, :only =>[:create,:edit,:update]
   end
@@ -16,6 +18,7 @@ Rails.application.routes.draw do
   patch 'tasks/:id' => 'tasks#update1', as: 'task'
   
   get 'tasks/calender' => 'tasks#calender', as: 'tasks_calender'
+
   
   root 'kadais#index'
   # The priority is based upon order of creation: first created -> highest priority.

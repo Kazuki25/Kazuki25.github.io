@@ -7,6 +7,11 @@ class KadaisController < ApplicationController
     @kadais = Kadai.where.not(status: ["04_Invaild", "99_Close"])
     @tasks = Task.where.not(status:["04_Invaild", "99_Close"]).order("due_date ASC")
   end
+  
+  #GET /kadais/list
+  def list
+    @kadais = Kadai.where.not(status: "04_Invaild")
+  end
 
   # GET /kadais/1
   # GET /kadais/1.json
