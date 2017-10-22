@@ -13,7 +13,7 @@ csv_data.each do |data|
     Task.create!(data.to_hash)
 end
 
-csv_data2 = CSV.read('db/kadai.csv', headers: true)
-csv_data2.each do |data|
-    Task.create!(data.to_hash)
+kadais = CSV.read('db/kadai.csv', headers: true)
+kadais.each do |data|
+    Kadai.create!(data.to_hash)
 end
