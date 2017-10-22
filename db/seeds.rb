@@ -33,3 +33,7 @@ statuses.each do |data|
     Status.create!(data.to_hash)
 end
 
+levels = CSV.read('db/level.csv', headers: true)
+levels.each do |data|
+    Level.create!(data.to_hash)
+end
