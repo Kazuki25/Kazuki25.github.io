@@ -1,0 +1,19 @@
+current directory: /var/www/rails/kadai-table/vendor/bundle/ruby/2.3.0/gems/byebug-9.1.0/ext/byebug
+/home/deploy/local/rbenv/versions/2.3.4/bin/ruby -r ./siteconf20171022-26825-f06vrr.rb extconf.rb
+creating Makefile
+
+current directory: /var/www/rails/kadai-table/vendor/bundle/ruby/2.3.0/gems/byebug-9.1.0/ext/byebug
+make "DESTDIR=" clean
+
+current directory: /var/www/rails/kadai-table/vendor/bundle/ruby/2.3.0/gems/byebug-9.1.0/ext/byebug
+make "DESTDIR="
+compiling breakpoint.c
+compiling byebug.c
+compiling threads.c
+compiling locker.c
+compiling context.c
+linking shared-object byebug/byebug.so
+
+current directory: /var/www/rails/kadai-table/vendor/bundle/ruby/2.3.0/gems/byebug-9.1.0/ext/byebug
+make "DESTDIR=" install
+/usr/bin/install -c -m 0755 byebug.so ./.gem.20171022-26825-g5d1py/byebug
