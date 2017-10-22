@@ -18,7 +18,7 @@
 
   <div class="field">
     <%= f.label :status, '状態' %><br>
-    <%= f.select :status, ["01_Open","02_Inprocess","03_Pending", "04_Invaild","99_Close"]%>
+    <%= f.select :status, Status.all.order('code ASC'), :phase, :phase %>
   </div>
   <div class="field">
     <%= f.label :task,'タスク内容' %><br>
@@ -26,7 +26,7 @@
   </div>
   <div class="field">
     <%= f.label :do_person,'担当者' %><br>
-    <%= f.collection_select :do_person,Person.all %>
+    <%= f.collection_select :do_person,Person.all, :name, :name %>
   </div>
   <div class="field">
     <%= f.label :plan_hour,'予定作業時間(h)' %><br>
