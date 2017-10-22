@@ -94,8 +94,8 @@
 <h3>タスクを追加する</h3>
 <%= form_for [@kadai, @task] do |f| %>
   <p>タスク内容:</p><p><%= f.text_field :task %></p>
-  <p>状態:</p><p><%= f.select :status,["01_Open","02_Inprocess","03_Pending", "04_Invaild","99_Close"]%></p>
-  <p>担当者:</p><p><%= f.text_field :do_person %></p>
+  <p>状態:</p><p><%= f.collection_select :status, Status.all.order('code ASC')%></p>
+  <p>担当者:</p><p><%= f.collection_select :do_person, Person.all %></p>
   <p>予定作業時間:</p><p><%= f.text_field :plan_hour %></p>
   <p>実施予定日:</p><p><%= f.date_select :due_date %></p>
 

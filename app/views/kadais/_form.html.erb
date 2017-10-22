@@ -21,11 +21,11 @@
   </div>
   <div class="field">
     <%= f.label :vote_person,'起票者' %><br>
-    <%= f.select :vote_person,['浅','作村','吉野'] %>
+    <%= f.collection_select :vote_person, Person.all, :name,:name %>
   </div>
   <div class="field">
     <%= f.label :category,'カテゴリー' %><br>
-    <%= f.select :category,['PPC','経理','会議','PMO','新規事業'] %>
+    <%= f.collection_select :category,Category.all, :name,:name %>
   </div>
   <div class="field">
     <%= f.label :subject, '課題' %><br>
@@ -33,11 +33,11 @@
   </div>
   <div class="field">
     <%= f.label :level,'重要度' %><br>
-    <%= f.select :level,['高','中','低'] %>
+    <%= f.collection_select :level, Level.all, :level, :level %>
   </div>
   <div class="field">
     <%= f.label :do_person,'対応担当者' %><br>
-    <%= f.select :do_person,['浅','作村','吉野'] %>
+    <%= f.collection_select :do_person, Person.all, :name,:name %>
   </div>
   <div class="field">
     <%= f.label :goal,'完了基準' %><br>

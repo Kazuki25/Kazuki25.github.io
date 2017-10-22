@@ -1,0 +1,6 @@
+code,phase
+1,01_Open
+2,02_Inprocess
+3,03_Pending
+4,04_Invaild
+99,99_Close

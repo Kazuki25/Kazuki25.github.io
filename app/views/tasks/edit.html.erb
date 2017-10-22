@@ -26,7 +26,7 @@
   </div>
   <div class="field">
     <%= f.label :do_person,'担当者' %><br>
-    <%= f.select :do_person,['浅','作村','吉野'] %>
+    <%= f.collection_select :do_person,Person.all %>
   </div>
   <div class="field">
     <%= f.label :plan_hour,'予定作業時間(h)' %><br>
