@@ -10,7 +10,7 @@ class KadaisController < ApplicationController
   
   #GET /kadais/list
   def list
-    @kadais = Kadai.where.not(status: "04_Invaild")
+    @kadais = Kadai.where.not(status: "04_Invaild").order('due_date DESC')
   end
 
   # GET /kadais/1
