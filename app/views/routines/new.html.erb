@@ -1,0 +1,55 @@
+<h2>新規業務を追加する</h2>
+
+<%= form_for(@routine) do |f| %>
+  <div class="field">
+    <%= f.label :group, '業務グループ' %><br>
+    <%= f.text_field :group%>
+  </div>
+  
+  <div class="field">
+    <%= f.label :task_id, 'タスク番号' %><br>
+    <%= f.text_field :task_id%>
+  </div>
+  
+  <div class="field">
+    <%= f.label :do_person, '担当者' %><br>
+    <%= f.collection_select :do_person, Person.all, :name, :name %>
+  </div>
+  
+  <div class="field">
+    <%= f.label :task, 'タスク内容' %><br>
+    <%= f.text_field :task%>
+  </div>
+  
+  <div class="field">
+    <%= f.label :plan_hour, '予定作業時間' %><br>
+    <%= f.text_field :plan_hour%>
+  </div>
+  
+  <!-- div class="field">
+    <%= f.label :do_date, '実施日' %><br>
+    <%= f.date_select :do_date %>
+  </div -->
+  
+  <div class="field">
+    <% wd = ["日", "月", "火", "水", "木", "金", "土"] %>
+    <% for i in 0..6 do %>
+      <label><input name="wday[]" type="checkbox" value="<%= i %>" /><%= wd[i] %></label><br />
+    <% end %>
+  </div>
+  
+　<div class="field">
+    何週間分入力する？<br>
+    <input name="times" type="text" placeholder="正の整数を入力"/><br /> 
+  </div>
+  
+  
+  <!-- div class="field">
+    <%= f.label :actual_hour, '実績作業時間' %><br>
+    <%= f.text_field :actual_hour%>
+  </div -->
+  
+  <div class="actions">
+    <%= f.submit("新規投稿") %>
+  </div>
+<% end %>

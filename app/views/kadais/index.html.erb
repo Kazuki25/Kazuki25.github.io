@@ -1,8 +1,10 @@
 <p id="notice"><%= notice %></p>
 
+<p><%= link_to '業務カレンダーを見る', routines_path %></p>
+
 <h2>課題一覧</h2>
 
-<table>
+<table class="responsive">
   <thead>
     <tr>
       <th></th>
@@ -42,7 +44,7 @@
 
 
 <h2>タスク一覧 <%= link_to 'タスクカレンダー', tasks_calender_path %></h2>
-<table border="0">
+<table class="responsive">
   <thead>
     <tr>
       <th></th>

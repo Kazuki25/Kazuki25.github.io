@@ -13,54 +13,92 @@
  *= require_tree .
  *= require_self
  */
- 
-.logo{
-    width: 400px;
-    height: 200px;
-}
-
-.emp {
-  background-color:#EB7988; 
-  color:#FFFFFF;
-}
- 
-table {
-  border-top: 1px solid #999;
-  border-right: 1px solid #999;
-  border-collapse: collapse;
-  width: auto;
-  text-align: center;
-}
-table th,
-table td {
-  border-left: 1px solid #999;
-  border-bottom: 1px solid #999;
-  padding: 10px;
-}
-table th {
-  background-color: #eee;
-}
-
-.edit {
-  background-color: #eee;
-}
-
-@media screen and (max-width: 500px) {
+@media screen and (min-width: 500px){
+  .width_10{
+    width:10px;
+  }  
   
+  .width_30{
+    width:30px;
+  }
+  
+  .width_40{
+    width:40px;
+  }
+  
+  .width_50{
+    width:50px;
+  }
+  
+  .width_200{
+    width: 200px;
+  }
+  
+  .width_task{
+    width: 200px;
+  }
+  
+  #tasks_calender {
+    table-layout: fixed;
+    width:1200px;
+  }
+  
+  #routine_calender {
+    table-layout: fixed;
+    width:1590px;
+  }
+  
+}
+
+  .emp {
+    background-color:#EB7988; 
+    color:#FFFFFF;
+  }
+
+  .logo{
+      width: 400px;
+      height: 200px;
+  }
+  
+  table {
+    border-top: 1px solid #999;
+    border-right: 1px solid #999;
+    border-collapse: collapse;
+    text-align: center;
+    width: auto;
+  }
+  
+  table th,
+  table td {
+    border-left: 1px solid #999;
+    border-bottom: 1px solid #999;
+    padding: 10px;
+  }
+  table th {
+    background-color: #eee;
+  }
+  
+  .edit {
+    background-color: #eee;
+  }
+
+@media screen and (max-width:500px){
   .logo{
   width: 100%;
   height: auto;
   }
   
-  table {
+  table.responsive {
     display: block;
     position: relative;
+    table-layout: auto
   }
-  table thead {
+  
+  table.responsive thead {
     display: block;
     float: left;
   }
-  table tbody {
+  table.responsive tbody {
     display: block;
     width: auto;
     position: relative;
@@ -68,15 +106,38 @@ table th {
     white-space: nowrap;
     -webkit-overflow-scrolling: touch;
   }
-  table th,
-  table td {
+  table.responsive th,
+  table.responsive td {
     height: 30px;
     display: block;
   }
-  table tr {
+  table.responsive tr {
     display: inline-block;
   }
-  table tbody tr {
+  table.responsive tbody tr {
     margin-right: -5px;
+  }
+
+  .scroll{
+  overflow: auto;　　　　/*tableをスクロールさせる*/
+  white-space: nowrap;　　/*tableのセル内にある文字の折り返しを禁止*/
+  }
+  .scroll::-webkit-scrollbar{　　/*tableにスクロールバーを追加*/
+   height: 5px;
+  }
+  .scroll::-webkit-scrollbar-track{　　/*tableにスクロールバーを追加*/
+   background: #F1F1F1;
+  }
+  .scroll::-webkit-scrollbar-thumb {　　/*tableにスクロールバーを追加*/
+   background: #BCBCBC;
+  }
+  
+  #routine_calender{
+    table-layout: fixed;
+    width:3000px;
+  }
+  
+  .width_task{
+    width: 100px;
   }
 }

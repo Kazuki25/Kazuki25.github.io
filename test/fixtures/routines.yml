@@ -1,0 +1,19 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  group: MyString
+  task_id: 1
+  do_person: MyString
+  task: MyString
+  plan_hour: 1.5
+  actual_hour: 1.5
+  do_date: 2017-10-22
+
+two:
+  group: MyString
+  task_id: 1
+  do_person: MyString
+  task: MyString
+  plan_hour: 1.5
+  actual_hour: 1.5
+  do_date: 2017-10-22

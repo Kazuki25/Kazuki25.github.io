@@ -11,6 +11,8 @@ Rails.application.routes.draw do
   
   resources :categories
   
+  resources :routines
+  
   #resources :tasks, :only =>[:update]
   
   get 'tasks/:task_id/edit' => 'tasks#edit1', as: 'edit_task'
@@ -18,7 +20,6 @@ Rails.application.routes.draw do
   patch 'tasks/:id' => 'tasks#update1', as: 'task'
   
   get 'tasks/calender' => 'tasks#calender', as: 'tasks_calender'
-
   
   root 'kadais#index'
   # The priority is based upon order of creation: first created -> highest priority.

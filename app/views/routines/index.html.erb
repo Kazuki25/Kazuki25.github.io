@@ -1,0 +1,64 @@
+<% day = Date.today.beginning_of_month %>
+
+<h2>業務カレンダー</h2>
+
+
+<p><%= link_to '新規業務を登録する', new_routine_path %></p>
+<div class="scroll">
+<table id="routine_calender">
+    <thead>
+        <th class="width_50">業務グループ</th>
+        <th class="width_40">タスク番号</th>
+        <th class="width_40">担当者</th>
+        <th class="width_task">タスク内容</th>
+        <th class="width_30">作業時間</th>
+        <% for i in 0..31 do%>
+            <% if day+i == Date.today then %>
+                <th class="emp width_40"><%= (day+i).strftime("%m/%d") %><br>Today</th>
+            <% else %>
+                <th class="width_40"><%= (day+i).strftime("%m/%d") %></th>
+            <% end %>
+        <% end %>
+    </thead>
+    <tbody>
+        <% @groups.zip(@routines_group).each do |group, routines| %>
+        <tr>
+            <% task_id = group.task_id %>
+            <td class="edit", rowspan="2"><%= group.group %></td>
+            <% group_name = group.group %>
+            <td rowspan="2"><%= group.task_id %></td>
+            <td rowspan="2"><%= group.do_person %></td>
+            <td rowspan="2"><%= group.task %></td>
+            <td>予定</td>
+            <% for i in 0..31 do %>
+                <% chk_data = 0 %>
+                <% routines.each do |routine| %>
+                    <% if routine.do_date == (day+i) and chk_data == 0 and routine.task_id == task_id then %>
+                        <td style="background-color:#A2DBA8; color:#ffffff; text-align:center;"><%= link_to routine.plan_hour, edit_routine_path(routine) %></td>
+                        <% chk_data = 1 %>
+                    <% end %>
+                <% end %>
+                <% if chk_data == 0 %>
+                    <td></td>
+                <% end %>
+            <% end %>
+        </tr>
+        <tr>
+            <td>実績</td>
+            <% for i in 0..31 do %>
+                <% chk_data = 0 %>
+                <% routines.each do |routine| %>
+                    <% if routine.do_date == (day+i) and !routine.actual_hour.nil? and routine.task_id == task_id then %>
+                        <td style="background-color:#A2DBA8; color:#ffffff; text-align:center;"><%= routine.actual_hour %></td>
+                        <% chk_data = 1 %>
+                    <% end %>
+                <% end %>
+                <% if chk_data == 0 %>
+                    <td></td>
+                <% end %>
+            <% end %>
+        </tr>
+        <% end %>
+    </tbody>
+</table>
+</div>
