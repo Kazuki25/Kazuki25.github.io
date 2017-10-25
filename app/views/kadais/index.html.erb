@@ -30,7 +30,7 @@
         <td data-label='対応担当者'><%= kadai.do_person %></td>
         <td data-label='内容'><%= kadai.subject %></td>
         <td data-label='期日'><%= kadai.due_date %></td>
-        <td data-label='進捗'><%= kadai.tasks.sum(:plan_hour) %>h(<%= kadai.tasks.sum(:actual_hour)%>h完了)</td>
+        <td data-label='進捗'><%= kadai.tasks.sum(:plan_hour).round(1) %>h(<%= kadai.tasks.sum(:actual_hour).round(1) %>h完了)</td>
       </tr>
     <% end %>
   </tbody>

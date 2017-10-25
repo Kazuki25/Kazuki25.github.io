@@ -72,7 +72,7 @@
   </thead>
   
   <tbody>
-    <% @kadai.tasks.where.not(status:"04_Invaild").each do |task| %>
+    <% @kadai.tasks.where.not(status:"04_Invaild").order('do_date DESC').each do |task| %>
     <tr>
       <td><%= task.id %></td>
       <td><%= task.task %></td>
