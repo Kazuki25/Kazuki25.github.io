@@ -2,7 +2,7 @@
 
 <p><%= link_to '課題を編集', edit_kadai_path(@kadai) %> </p>
 
-<table border="0">
+<table>
 <tr>
   <td><strong>状態</strong></td>
   <td><%= @kadai.status %></td>
@@ -56,7 +56,7 @@
 
 
 <h3>関連タスク</h3>
-<table border="1">
+<table class="responsive">
   <thead>
     <tr>
       <th>タスク番号</th>
