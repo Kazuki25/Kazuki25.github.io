@@ -31,5 +31,17 @@ class TasksController < ApplicationController
     
     def calender
         @tasks = Task.where.not(status: ["04_Invaild","99_Close",""]).order('due_date ASC')
+        @persons_for_options = Hash.new
+        Person.all.each do |person|
+           @persons_for_options.store(person.name, person.name)
+        end
+    end
+    
+    def filter
+        @tasks = Task.where(do_person: params[:person]).where.not(status:["04_Invaild",""]).where.not(due_date: "").order('due_date DESC')
+        @persons_for_options = Hash.new
+        Person.all.each do |person|
+           @persons_for_options.store(person.name, person.name)
+        end
     end
 end

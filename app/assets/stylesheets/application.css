@@ -54,6 +54,11 @@
     background-color:#EB7988; 
     color:#FFFFFF;
   }
+  
+  .today {
+    background-color:#A2DBA8; 
+    color:#FFFFFF;
+  }
 
   .logo{
       width: 400px;

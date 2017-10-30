@@ -1,0 +1,95 @@
+<p id="notice"><%= notice %></p>
+
+<p><%= link_to '業務カレンダーを見る', routines_path %></p>
+
+<%= form_tag kadais_filter_path do %>
+    <%= select_tag :person, options_for_select(@persons_for_options), :include_blank => true %>
+    <%= submit_tag "フィルターをかける" %>
+<% end %>
+
+<h2>課題一覧</h2>
+
+<table class="responsive">
+  <thead>
+    <tr>
+      <th></th>
+      <th></th>
+      <th>状態</th>
+      <th>カテゴリー</th>
+      <th>重要度</th>
+      <th>対応担当者</th>
+      <th>課題内容（現状記述）</th>
+      <th>期日</th>
+      <th>進捗状況</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @kadais.each do |kadai| %>
+      <tr>
+        <td class="edit"><%= link_to '詳細', kadai %></td>
+        <td class="edit"><%= link_to '編集', edit_kadai_path(kadai) %></td>
+        <td data-label='状態'><%= kadai.status %></td>
+        <td data-label='カテゴリー'><%= kadai.category %></td>
+        <td data-label='重要度'><%= kadai.level %></td>
+        <td data-label='対応担当者'><%= kadai.do_person %></td>
+        <td data-label='内容'><%= kadai.subject %></td>
+        <td data-label='期日'><%= kadai.due_date %></td>
+        <td data-label='進捗'><%= kadai.tasks.sum(:plan_hour).round(1) %>h(<%= kadai.tasks.sum(:actual_hour).round(1) %>h完了)</td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<p><%= link_to '新規課題を追加', new_kadai_path %><br></p>
+
+<p><%= link_to '終了した課題も見たい方はこちら', list_kadais_path %></p>
+
+
+<h2>タスク一覧 <%= link_to 'タスクカレンダー', tasks_calender_path %></h2>
+<table class="responsive">
+  <thead>
+    <tr>
+      <th></th>
+      <th>タスク内容</th>
+      <th>状態</th>
+      <th>担当者</th>
+      <th>進捗状況</th>
+      <th>完了予定日</th>
+    </tr>
+  </thead>
+  
+  <tbody>
+    <% @tasks.each do |task| %>
+    <tr>
+      <td class="edit"><%= link_to '更新', edit_task_path(task) %></td>
+      <td><%= task.task %></td>
+      <td><%= task.status %></td>
+      <td><%= task.do_person %></td>
+      <td><%= task.plan_hour %>h<br>(<%= task.actual_hour %>h完了)</td>
+      <% if task.due_date < Date.today then %>
+        <td class="emp"><%= task.due_date.strftime('%m/%d') %></td>
+      <% elsif task.due_date == Date.today then %>
+        <td class="today"><%= task.due_date.strftime('%m/%d') %></td>
+      <% else %>
+        <td><%= task.due_date.strftime('%m/%d') %></td>
+      <% end %>
+    </tr>
+    <% end %>
+  </tbody>
+</table>
+
+
+<h3>完了したタスクも見たい方はこちら</h3>
+<%= link_to 'タスク一覧', tasks_path %>
+
+<h3>担当者を追加する</h3>
+<%= link_to '担当者の追加', persons_path %>
+
+<h3>状態を追加する（課題・タスク共通）</h3>
+<%= link_to '担当者の追加', statuses_path %>
+
+<h3>カテゴリーを追加する</h3>
+<%= link_to '担当者の追加', categories_path %>

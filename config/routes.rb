@@ -21,6 +21,9 @@ Rails.application.routes.draw do
   
   get 'tasks/calender' => 'tasks#calender', as: 'tasks_calender'
   
+  post 'kadais/filter/' => 'kadais#filter', as: 'kadais_filter'
+  post 'tasks/filter/' => 'tasks#filter', as: 'tasks_filter'
+  
   root 'kadais#index'
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".

@@ -6,6 +6,19 @@ class KadaisController < ApplicationController
   def index
     @kadais = Kadai.where.not(status: ["04_Invaild", "99_Close"]).order('due_date DESC')
     @tasks = Task.where.not(status:["04_Invaild", "99_Close"]).order("due_date ASC")
+    @persons_for_options = Hash.new
+    Person.all.each do |person|
+      @persons_for_options.store(person.name, person.name)
+    end
+  end
+  
+  def filter
+    @kadais = Kadai.where(do_person: params[:person]).where.not(status: ["04_Invaild", "99_Close"]).order('due_date DESC')
+    @tasks = Task.where(do_person: params[:person]).where.not(status: ["04_Invaild", "99_Close"]).order("due_date ASC")
+    @persons_for_options = Hash.new
+    Person.all.each do |person|
+      @persons_for_options.store(person.name, person.name)
+    end
   end
   
   #GET /kadais/list
